@@ -1,0 +1,687 @@
+🚀 50 PRINCIPAIS COMANDOS DO POWERSHELL PARA RPA E AUTOMAÇÃO
+📋 CATEGORIAS DOS COMANDOS:
+Comandos Básicos do Sistema
+
+Gerenciamento de Arquivos e Diretórios
+
+Processos e Serviços
+
+Rede e Conectividade
+
+Sistema e Informações
+
+Scripting e Automação
+
+Gerenciamento do Windows
+
+Utilitários para RPA
+
+Comandos Avançados
+
+🎯 50 COMANDOS ESSENCIAIS DO POWERSHELL
+1. COMANDOS BÁSICOS DO SISTEMA
+powershell
+# 1. Ajuda e documentação
+Get-Help Get-Process          # Ajuda sobre um comando
+Get-Command *process*         # Encontrar comandos relacionados
+Update-Help                   # Atualizar ajuda online
+
+# 2. Listar comandos disponíveis
+Get-Command                   # Todos os comandos
+Get-Command -Verb Get        # Comandos que começam com Get
+Get-Command -Noun Process    # Comandos relacionados a Process
+
+# 3. Executar programas externos
+Start-Process notepad.exe                     # Abrir programa
+Start-Process "C:\Program.exe" -Wait          # Aguardar término
+Start-Process chrome.exe -ArgumentList "https://google.com"
+
+# 4. Executar comandos CMD antigos
+cmd /c "dir C:\"                              # Usar comandos DOS
+ipconfig                                      # Funciona diretamente
+
+# 5. Pipelines (como no Linux)
+Get-Process | Where-Object {$_.CPU -gt 100}   # Filtrar processos
+Get-Service | Select-Object Name, Status      # Selecionar colunas
+2. GERENCIAMENTO DE ARQUIVOS E DIRETÓRIOS
+powershell
+# 6. Navegação de diretórios
+Get-Location                  # Diretório atual (pwd)
+Set-Location C:\Windows      # Mudar diretório (cd)
+Push-Location                # Salvar diretório atual
+Pop-Location                 # Voltar ao diretório salvo
+
+# 7. Listar arquivos e pastas
+Get-ChildItem                # Listar conteúdo (dir/ls)
+Get-ChildItem -Recurse       # Listar recursivamente
+Get-ChildItem -Filter *.txt  # Filtrar por extensão
+Get-ChildItem -Hidden        # Mostrar ocultos
+
+# 8. Manipulação de arquivos
+Copy-Item origem destino -Recurse     # Copiar
+Move-Item origem destino              # Mover
+Remove-Item arquivo                   # Excluir (del/rm)
+Rename-Item antigo novo               # Renomear
+New-Item -Type File nome.txt          # Criar arquivo
+New-Item -Type Directory pasta        # Criar pasta
+
+# 9. Ler e escrever arquivos
+Get-Content arquivo.txt               # Ler arquivo (cat/type)
+Get-Content arquivo.log -Tail 10      # Últimas 10 linhas
+Set-Content arquivo.txt "conteúdo"    # Sobrescrever arquivo
+Add-Content arquivo.txt "nova linha"  # Adicionar ao final
+Clear-Content arquivo.txt             # Limpar conteúdo
+
+# 10. Propriedades de arquivos
+Get-Item arquivo.txt | Select-Object *  # Todas propriedades
+(Get-Item arquivo.txt).LastWriteTime    # Data modificação
+(Get-Item arquivo.txt).Length           # Tamanho em bytes
+3. PROCESSOS E SERVIÇOS
+powershell
+# 11. Gerenciar processos
+Get-Process                          # Listar todos processos
+Get-Process -Name chrome             # Processo específico
+Stop-Process -Name notepad -Force    # Forçar parada
+Start-Process notepad.exe            # Iniciar processo
+Get-Process | Sort-Object CPU -Descending  # Ordenar por CPU
+
+# 12. Gerenciar serviços
+Get-Service                          # Todos serviços
+Get-Service -Name "Spooler"          # Serviço específico
+Start-Service -Name "Spooler"        # Iniciar serviço
+Stop-Service -Name "Spooler"         # Parar serviço
+Restart-Service -Name "Spooler"      # Reiniciar serviço
+
+# 13. Informações detalhadas
+Get-Process chrome | Select-Object Id, Name, CPU, WorkingSet
+Get-Service | Where-Object {$_.Status -eq "Running"}
+Get-Service | Format-Table Name, Status, StartType -AutoSize
+4. REDE E CONECTIVIDADE
+powershell
+# 14. Testar conectividade
+Test-Connection google.com           # Ping (como ping)
+Test-NetConnection google.com -Port 80  # Testar porta
+Test-WSMan google.com                # Testar WinRM
+
+# 15. Informações de rede
+Get-NetIPAddress                     # Endereços IP
+Get-NetAdapter                       # Adaptadores de rede
+ipconfig /all                        # Todas informações (CMD)
+Get-NetRoute                         # Rotas de rede
+
+# 16. Download/Upload
+Invoke-WebRequest -Uri "https://url.com/file.zip" -OutFile "local.zip"
+(New-Object Net.WebClient).DownloadFile("url", "local")
+
+# 17. DNS e resolução
+Resolve-DnsName google.com           # Resolver DNS
+nslookup google.com                  # Usando nslookup
+
+# 18. Portas e conexões
+Get-NetTCPConnection                 # Conexões TCP
+Get-NetTCPConnection -State Listen   # Portas ouvindo
+netstat -an                          # Estilo CMD
+5. SISTEMA E INFORMAÇÕES
+powershell
+# 19. Informações do sistema
+Get-ComputerInfo                     # Todas informações
+Get-WmiObject Win32_ComputerSystem   # Info via WMI
+systeminfo                           # Estilo CMD
+
+# 20. Informações de hardware
+Get-WmiObject Win32_Processor        # Processador
+Get-WmiObject Win32_PhysicalMemory   # Memória RAM
+Get-WmiObject Win32_DiskDrive        # Discos
+Get-WmiObject Win32_LogicalDisk      # Partições
+
+# 21. Event Logs
+Get-EventLog -LogName System -Newest 10      # Logs do sistema
+Get-WinEvent -FilterHashtable @{LogName='Application'}  # Eventos
+
+# 22. Usuários e grupos
+Get-LocalUser                        # Usuários locais
+Get-LocalGroup                       # Grupos locais
+whoami                               # Usuário atual
+net user                             # Usuários (CMD)
+
+# 23. Variáveis de ambiente
+Get-ChildItem Env:                   # Todas variáveis
+$env:USERNAME                        # Usuário atual
+$env:COMPUTERNAME                    # Nome do computador
+$env:PATH                            # PATH do sistema
+[Environment]::GetEnvironmentVariables()  # Todas como objeto
+6. SCRIPTING E AUTOMAÇÃO
+powershell
+# 24. Variáveis e tipos
+$variavel = "valor"                  # Criar variável
+[int]$numero = 42                    # Tipo específico
+$array = @(1, 2, 3)                  # Array
+$hash = @{Nome="João";Idade=30}      # Hashtable (dicionário)
+
+# 25. Estruturas de controle
+if (condição) { comando }            # IF
+for ($i=0; $i -lt 10; $i++) { }     # FOR
+foreach ($item in $lista) { }        # FOREACH
+while (condição) { }                 # WHILE
+do { } until (condição)              # DO-UNTIL
+
+# 26. Funções
+function Teste {                     # Definir função
+    param($parametro)
+    Write-Host "Parâmetro: $parametro"
+}
+Teste -parametro "valor"             # Chamar função
+
+# 27. Scripts com parâmetros
+param(
+    [string]$Nome,
+    [int]$Idade = 30
+)
+Write-Host "Nome: $Nome, Idade: $Idade"
+
+# 28. Tratamento de erros
+try {
+    comando-que-pode-falhar
+} catch {
+    Write-Error "Erro: $_"
+} finally {
+    # Sempre executa
+}
+
+# 29. Logging e output
+Write-Host "Mensagem normal"         # Console
+Write-Output "Saída"                 # Pipeline
+Write-Warning "Aviso"                # Amarelo
+Write-Error "Erro"                   # Vermelho
+Write-Verbose "Detalhes"             # Com -Verbose
+Write-Debug "Debug"                  # Com -Debug
+7. GERENCIAMENTO DO WINDOWS
+powershell
+# 30. Registro do Windows
+Get-ChildItem HKLM:\Software         # Ler registro
+Set-ItemProperty -Path "HKLM:\..." -Name "Nome" -Value "Valor"
+New-Item -Path "HKLM:\Software\MinhaApp"  # Criar chave
+Remove-Item -Path "HKLM:\..."        # Remover chave
+
+# 31. Tarefas agendadas
+Get-ScheduledTask                    # Listar tarefas
+Start-ScheduledTask -TaskName "Nome" # Iniciar tarefa
+Stop-ScheduledTask -TaskName "Nome"  # Parar tarefa
+
+# 32. Instalação de programas
+Get-WmiObject Win32_Product | Select-Object Name, Version  # Programas
+wmic product get name               # Listar programas (CMD)
+
+# 33. Gerenciamento de drivers
+Get-WindowsDriver -Online           # Drivers online
+Get-PnpDevice                       # Dispositivos PnP
+
+# 34. Desligar/Reiniciar
+Restart-Computer -Force             # Reiniciar agora
+Stop-Computer -Force                # Desligar agora
+shutdown /r /t 0                    # Estilo CMD
+8. UTILITÁRIOS PARA RPA
+powershell
+# 35. Data e hora
+Get-Date                             # Data/hora atual
+(Get-Date).ToString("yyyy-MM-dd")    # Formatar data
+(Get-Date).AddDays(7)                # Adicionar dias
+Measure-Command { comando }          # Medir tempo execução
+
+# 36. Matemática e operações
+[math]::Pow(2, 3)                    # Potência (2³)
+[math]::Sqrt(16)                     # Raiz quadrada
+[math]::Round(3.14159, 2)            # Arredondar
+1..10                                # Gerar sequência
+
+# 37. Strings e texto
+"texto".ToUpper()                    # Maiúsculas
+"TEXTO".ToLower()                    # Minúsculas
+"olá mundo".Substring(0, 3)          # Substring
+"nome,idade".Split(",")              # Dividir string
+"valor: {0}" -f 42                   # Formatar string
+
+# 38. CSV e dados estruturados
+Import-Csv dados.csv                 # Importar CSV
+$dados | Export-Csv saida.csv -NoTypeInformation  # Exportar
+ConvertTo-Json $objeto               # Converter para JSON
+ConvertFrom-Json '{"nome":"João"}'   # JSON para objeto
+
+# 39. XML
+[xml]$xml = Get-Content arquivo.xml  # Ler XML
+$xml.Node.SubNode                    # Navegar no XML
+$xml | Export-Clixml saida.xml       # Exportar XML
+
+# 40. Clipboard
+Get-Clipboard                        # Pegar do clipboard
+"texto" | Set-Clipboard              # Copiar para clipboard
+Get-Clipboard -Format FileDropList   # Arquivos copiados
+9. COMANDOS AVANÇADOS
+powershell
+# 41. Jobs em background
+Start-Job -ScriptBlock { Get-Process }  # Executar em background
+Get-Job                                  # Listar jobs
+Receive-Job -Id 1                        # Ver resultado
+Remove-Job -Id 1                         # Remover job
+
+# 42. Módulos e pacotes
+Get-Module -ListAvailable               # Módulos disponíveis
+Import-Module NomeModulo                # Importar módulo
+Install-Module PSReadLine               # Instalar módulo
+Find-Module *azure*                     # Buscar módulos
+
+# 43. Segurança e permissões
+Get-Acl C:\Windows                     # Permissões de pasta
+Get-Process -IncludeUserName           # Processos com usuário
+whoami /priv                           # Privilégios do usuário
+
+# 44. Performance
+Get-Counter "\Processor(_Total)\% Processor Time"  # Contadores
+Get-WmiObject Win32_PerfFormattedData_PerfProc_Process
+
+# 45. Remoting
+Enter-PSSession -ComputerName Servidor  # Sessão remota
+Invoke-Command -ComputerName PC1 -ScriptBlock { Get-Process }
+
+# 46. WMI/CIM
+Get-CimInstance Win32_Process          # Moderno (CIM)
+Get-WmiObject Win32_Process            # Legado (WMI)
+Get-CimClass -ClassName *process*      # Buscar classes
+
+# 47. Pipeline avançado
+Get-Process | Group-Object Name        # Agrupar por nome
+Get-Service | Sort-Object Status       # Ordenar
+Get-Process | Measure-Object -Property CPU -Average  # Estatísticas
+
+# 48. Regex
+"texto123" -match "\d+"                # Contém números?
+"a,b,c" -split ","                     # Dividir por regex
+"hello" -replace "l", "L"              # Substituir
+
+# 49. Comandos condicionais
+Get-ChildItem | Where-Object {$_.Length -gt 1MB}  # Where-Object
+Get-Process | Select-Object Name, @{n="MB";e={$_.WS/1MB}}  # Calculada
+
+# 50. Profile personalizado
+notepad $PROFILE                      # Editar profile do PS
+Test-Path $PROFILE                    # Verificar se existe
+# $PROFILE = C:\Users\Usuario\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+🎯 EXEMPLO PRÁTICO COMPLETO PARA RPA COM POWERSHELL
+powershell
+<#
+SCRIPT DE RPA: Monitoramento de Sistema e Backup Automático
+Autor: Seu Nome
+Data: $(Get-Date -Format "yyyy-MM-dd")
+#>
+
+# Configurações
+$ErrorActionPreference = "Stop"
+$DataExecucao = Get-Date -Format "yyyyMMdd_HHmmss"
+$LogFile = "C:\Logs\RPA_$DataExecucao.log"
+$BackupDir = "C:\Backups"
+
+# Função de logging
+function Write-Log {
+    param(
+        [string]$Message,
+        [string]$Level = "INFO"
+    )
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $logEntry = "$timestamp [$Level] $Message"
+    Write-Host $logEntry
+    $logEntry | Out-File $LogFile -Append
+}
+
+# Função de backup
+function Backup-Files {
+    param(
+        [string]$SourceDir,
+        [string]$DestinationDir
+    )
+
+    Write-Log "Iniciando backup de $SourceDir"
+
+    try {
+        if (-not (Test-Path $DestinationDir)) {
+            New-Item -ItemType Directory -Path $DestinationDir -Force | Out-Null
+        }
+
+        $backupName = "Backup_$(Get-Date -Format 'yyyyMMdd')"
+        $backupPath = Join-Path $DestinationDir $backupName
+
+        # Compactar diretório
+        Compress-Archive -Path $SourceDir -DestinationPath "$backupPath.zip" -Force
+
+        Write-Log "Backup criado: $backupPath.zip"
+        return $true
+    }
+    catch {
+        Write-Log "Erro no backup: $_" -Level "ERROR"
+        return $false
+    }
+}
+
+# Função de monitoramento
+function Monitor-System {
+    Write-Log "Iniciando monitoramento do sistema"
+
+    # CPU e Memória
+    $cpu = Get-WmiObject Win32_Processor | Measure-Object -Property LoadPercentage -Average | Select-Object -ExpandProperty Average
+    $memory = Get-WmiObject Win32_OperatingSystem | Select-Object @{Name="MemoryUsage";Expression={[math]::Round(($_.TotalVisibleMemorySize - $_.FreePhysicalMemory)/$_.TotalVisibleMemorySize*100, 2)}}
+
+    Write-Log "CPU: $cpu% | Memória: $($memory.MemoryUsage)%"
+
+    # Processos problemáticos
+    $highCpuProcesses = Get-Process | Where-Object {$_.CPU -gt 50} | Select-Object Name, CPU, Id
+    if ($highCpuProcesses) {
+        Write-Log "Processos com alto uso de CPU:" -Level "WARNING"
+        $highCpuProcesses | ForEach-Object {
+            Write-Log "  - $($_.Name) (PID: $($_.Id)): $($_.CPU) segundos"
+        }
+    }
+
+    # Espaço em disco
+    $disks = Get-WmiObject Win32_LogicalDisk -Filter "DriveType=3"
+    foreach ($disk in $disks) {
+        $freePercent = [math]::Round(($disk.FreeSpace / $disk.Size) * 100, 2)
+        if ($freePercent -lt 10) {
+            Write-Log "Disco $($disk.DeviceID) com apenas $freePercent% livre" -Level "WARNING"
+        }
+    }
+
+    # Serviços parados
+    $stoppedServices = Get-Service | Where-Object {$_.Status -eq "Stopped" -and $_.StartType -eq "Automatic"}
+    if ($stoppedServices) {
+        Write-Log "Serviços automáticos parados:" -Level "WARNING"
+        $stoppedServices | ForEach-Object {
+            Write-Log "  - $($_.Name)"
+        }
+    }
+}
+
+# Função de limpeza
+function Clean-TempFiles {
+    Write-Log "Limpando arquivos temporários"
+
+    $tempPaths = @(
+        "$env:TEMP\*",
+        "C:\Windows\Temp\*",
+        "$env:LOCALAPPDATA\Temp\*"
+    )
+
+    $totalSize = 0
+    foreach ($path in $tempPaths) {
+        if (Test-Path $path) {
+            $files = Get-ChildItem $path -File -Recurse -ErrorAction SilentlyContinue | Where-Object {$_.LastWriteTime -lt (Get-Date).AddDays(-7)}
+
+            foreach ($file in $files) {
+                try {
+                    $totalSize += $file.Length
+                    Remove-Item $file.FullName -Force -ErrorAction Stop
+                }
+                catch {
+                    Write-Log "Não foi possível excluir $($file.FullName)" -Level "WARNING"
+                }
+            }
+        }
+    }
+
+    $sizeMB = [math]::Round($totalSize / 1MB, 2)
+    Write-Log "Limpados $sizeMB MB de arquivos temporários"
+}
+
+# Função principal
+function Main {
+    Write-Log "=== INICIANDO RPA COM POWERSHELL ==="
+
+    try {
+        # 1. Monitoramento
+        Monitor-System
+
+        # 2. Backup de documentos
+        $documentsPath = [Environment]::GetFolderPath("MyDocuments")
+        if (Test-Path $documentsPath) {
+            $backupResult = Backup-Files -SourceDir $documentsPath -DestinationDir $BackupDir
+            if ($backupResult) {
+                Write-Log "Backup de documentos concluído com sucesso"
+            }
+        }
+
+        # 3. Limpeza
+        Clean-TempFiles
+
+        # 4. Relatório final
+        Write-Log "=== RPA CONCLUÍDO COM SUCESSO ==="
+
+        # Enviar email (opcional)
+        # Send-MailMessage -From "rpa@empresa.com" -To "admin@empresa.com" -Subject "RPA Executado" -Body "Processo concluído"
+
+    }
+    catch {
+        Write-Log "ERRO CRÍTICO: $_" -Level "ERROR"
+        exit 1
+    }
+}
+
+# Executar
+Main
+📊 RESUMO DOS 50 MAIS USADOS EM RPA
+TOP 20 COMANDOS PARA AUTOMAÇÃO:
+Get-Process - Monitorar processos
+
+Start-Process - Executar programas
+
+Get-Service - Gerenciar serviços
+
+Get-ChildItem - Listar arquivos
+
+Copy-Item / Move-Item / Remove-Item - Manipular arquivos
+
+Get-Content / Set-Content - Ler/Escrever arquivos
+
+Test-Connection - Verificar conectividade
+
+Invoke-WebRequest - Fazer downloads
+
+Get-ComputerInfo - Informações do sistema
+
+Get-WmiObject / Get-CimInstance - Consultas WMI/CIM
+
+Get-EventLog - Logs do sistema
+
+Import-Csv / Export-Csv - Trabalhar com CSV
+
+Get-Date - Data e hora
+
+Where-Object - Filtrar resultados
+
+Select-Object - Selecionar propriedades
+
+Sort-Object - Ordenar resultados
+
+Measure-Object - Estatísticas
+
+Group-Object - Agrupar dados
+
+Compress-Archive - Criar ZIP
+
+Test-Path - Verificar existência
+
+PADRÕES DE AUTOMAÇÃO COMUNS:
+powershell
+# Padrão 1: Monitorar e alertar
+$processos = Get-Process | Where-Object {$_.WorkingSet -gt 500MB}
+if ($processos) {
+    Write-Warning "Processos com uso alto de memória: $($processos.Name)"
+}
+
+# Padrão 2: Backup automático
+$data = Get-Date -Format "yyyyMMdd"
+Copy-Item "C:\Dados\*" "C:\Backup\$data\" -Recurse -Force
+
+# Padrão 3: Limpeza programada
+Get-ChildItem "C:\Temp\" -Recurse | Where-Object {$_.LastWriteTime -lt (Get-Date).AddDays(-30)} | Remove-Item -Force
+
+# Padrão 4: Download e processamento
+Invoke-WebRequest -Uri "http://exemplo.com/dados.csv" -OutFile "dados.csv"
+$dados = Import-Csv "dados.csv"
+$dados | Where-Object {$_.Status -eq "Ativo"} | Export-Csv "ativos.csv"
+SCRIPT DE RPA PARA MONITORAMENTO DE LOGS:
+powershell
+# Monitorar logs em tempo real
+function Monitor-Logs {
+    param(
+        [string]$LogPath = "C:\Logs\",
+        [string]$Filter = "ERROR"
+    )
+
+    Write-Host "Monitorando logs em $LogPath para '$Filter'..." -ForegroundColor Yellow
+
+    $watcher = New-Object System.IO.FileSystemWatcher
+    $watcher.Path = $LogPath
+    $watcher.Filter = "*.log"
+    $watcher.IncludeSubdirectories = $true
+    $watcher.EnableRaisingEvents = $true
+
+    $action = {
+        $path = $Event.SourceEventArgs.FullPath
+        $changeType = $Event.SourceEventArgs.ChangeType
+        $timestamp = Get-Date -Format "HH:mm:ss"
+
+        Write-Host "[$timestamp] $changeType detectado em $path" -ForegroundColor Cyan
+
+        # Verificar se contém erro
+        $content = Get-Content $path -Tail 1
+        if ($content -match $Filter) {
+            Write-Host "ERRO DETECTADO: $content" -ForegroundColor Red -BackgroundColor Black
+            # Enviar alerta, email, etc.
+        }
+    }
+
+    Register-ObjectEvent $watcher "Created" -Action $action
+    Register-ObjectEvent $watcher "Changed" -Action $action
+
+    Write-Host "Pressione Ctrl+C para parar..." -ForegroundColor Green
+    while ($true) { Start-Sleep 1 }
+}
+AUTOMAÇÃO DE INSTALAÇÃO:
+powershell
+# Instalar múltiplos programas automaticamente
+function Install-Applications {
+    param(
+        [hashtable]$Applications = @{
+            "Chrome" = "https://dl.google.com/chrome/install/chrome_installer.exe"
+            "VSCode" = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64"
+            "7Zip"   = "https://www.7-zip.org/a/7z2201-x64.exe"
+        }
+    )
+
+    $installDir = "C:\Instaladores"
+    if (-not (Test-Path $installDir)) {
+        New-Item -ItemType Directory -Path $installDir | Out-Null
+    }
+
+    foreach ($app in $Applications.GetEnumerator()) {
+        Write-Host "Instalando $($app.Name)..." -ForegroundColor Yellow
+
+        $installerPath = Join-Path $installDir "$($app.Name).exe"
+
+        # Download
+        Write-Host "  Baixando..."
+        Invoke-WebRequest -Uri $app.Value -OutFile $installerPath
+
+        # Instalar
+        Write-Host "  Executando instalador..."
+        Start-Process $installerPath -ArgumentList "/S" -Wait
+
+        Write-Host "  $($app.Name) instalado!" -ForegroundColor Green
+    }
+
+    Write-Host "Todas aplicações instaladas!" -ForegroundColor Green
+}
+GERENCIAMENTO DE USUÁRIOS EM MASSA:
+powershell
+# Criar múltiplos usuários a partir de CSV
+function Create-UsersFromCSV {
+    param(
+        [string]$CsvPath = "usuarios.csv"
+    )
+
+    $users = Import-Csv $CsvPath
+
+    foreach ($user in $users) {
+        try {
+            # Verificar se usuário já existe
+            $existingUser = Get-LocalUser -Name $user.Username -ErrorAction SilentlyContinue
+
+            if ($existingUser) {
+                Write-Warning "Usuário $($user.Username) já existe. Atualizando..."
+                Set-LocalUser -Name $user.Username -Password (ConvertTo-SecureString $user.Password -AsPlainText -Force)
+            }
+            else {
+                # Criar novo usuário
+                New-LocalUser -Name $user.Username `
+                    -Password (ConvertTo-SecureString $user.Password -AsPlainText -Force) `
+                    -FullName $user.FullName `
+                    -Description $user.Description `
+                    -PasswordNeverExpires:($user.PasswordNeverExpires -eq "Sim")
+
+                Write-Host "Usuário $($user.Username) criado!" -ForegroundColor Green
+            }
+
+            # Adicionar ao grupo
+            if ($user.Group) {
+                Add-LocalGroupMember -Group $user.Group -Member $user.Username
+                Write-Host "  Adicionado ao grupo: $($user.Group)" -ForegroundColor Cyan
+            }
+        }
+        catch {
+            Write-Error "Erro ao processar usuário $($user.Username): $_"
+        }
+    }
+}
+DICAS PARA RPA COM POWERSHELL:
+Use $ErrorActionPreference = "Stop" para tratar erros
+
+Sempre logue ações com timestamps
+
+Use parâmetros nomeados para scripts reutilizáveis
+
+Valide inputs antes de processar
+
+Implemente try/catch para robustez
+
+Use comentários de ajuda com <# #>
+
+Teste com -WhatIf antes de executar ações destrutivas
+
+Mantenha scripts idempotentes - executáveis múltiplas vezes
+
+Use jobs para tarefas longas em background
+
+Documente requisitos e dependências
+
+EXEMPLO DE AGENDAMENTO:
+powershell
+# Criar tarefa agendada para RPA
+$action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-File C:\RPA\script.ps1"
+$trigger = New-ScheduledTaskTrigger -Daily -At "02:00"
+$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+
+Register-ScheduledTask -TaskName "RPA Diário" -Action $action -Trigger $trigger -Settings $settings -Description "RPA Automático Diário" -User "SYSTEM" -RunLevel Highest
+⚠️ CUIDADOS IMPORTANTES:
+Execute como Administrador quando necessário
+
+Teste em ambiente isolado primeiro
+
+Faça backup antes de operações destrutivas
+
+Use -WhatIf e -Confirm para comandos perigosos
+
+Desative execução de scripts com Set-ExecutionPolicy apropriado
+
+Valide inputs para evitar injeção
+
+Log tudo para auditoria e debug
+
+Monitore recursos para evitar loops infinitos
