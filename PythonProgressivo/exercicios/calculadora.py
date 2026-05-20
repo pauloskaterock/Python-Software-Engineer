@@ -1,4 +1,5 @@
 # Recebe dados do usuário
+# tranforma em float
 var1 = float( input("Digite um numero: ") )
 var2 = float( input("Digite outro numero: ") )
 

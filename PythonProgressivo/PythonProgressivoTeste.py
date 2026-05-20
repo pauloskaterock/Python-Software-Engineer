@@ -85,9 +85,45 @@
 
 # var1 = int( input("Digite um inteiro: ") )
 #------------------------------------------------------------------------
-var1 = int( input("Digite um inteiro: ") )
-var2 = int( input("Digite outro inteiro: ") )
+# var1 = int( input("Digite um inteiro: ") )
+# var2 = int( input("Digite outro inteiro: ") )
 
-produto = var1 ** var2
+# produto = var1 ** var2
 
-print(produto)
+# print(produto)
+
+
+# --------------------------------------------
+
+
+var = input('digite algo')
+print('voce digitou', var)
+
+
+
+# ---------------------------------------------------
+
+# tenho que estudar python 2 horas ou 120 minutos
+# crie um programa que calcule quantos blocos de 40 minutos devo usar para chegara 120 minutos de estudo
+
+
+# estu1 = 40
+# estu2 = 40
+# estu3 = 40
+
+# estuFinal = estu1 + estu2 + estu3
+# print("O total de minutos de estudo é:", estuFinal)
+
+#-----------------------------------------------------
+
+# Prêmio da Mega-Sena
+total = float( input('Premio total da Mega: ') )
+
+# Número de ganhadores
+num = int( input('Numero de ganhadores: ') )
+
+# print('Cada um vai ficar com R$ ', (total/num) )
+# print('Cada um vai ficar com R$ %.2f' % (total/num) )
+
+print('O premio total foi R$%.2f para %d ganhadores, onde cada um ficou \
+com R$%.2f' %(total,num,total/num))
