@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>RPA Master Vault | Python Automation Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eef2f9;
+            color: #0a1c2f;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* header hero */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.9rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0a2f44, #1f6390);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .badge-gold {
+            background: #0c4e6e;
+            color: white;
+            padding: 0.3rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: 0.8rem auto 0;
+            color: #2c4e6b;
+            font-weight: 500;
+        }
+
+        /* seções estilo modular */
+        .module {
+            margin-bottom: 2.2rem;
+        }
+
+        .module-header {
+            background: #ffffffd9;
+            backdrop-filter: blur(4px);
+            border-radius: 2rem;
+            padding: 0.75rem 1.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.4rem;
+            border: 1px solid #cde0ed;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .title-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .title-group .icon-mod {
+            font-size: 1.8rem;
+        }
+
+        .title-group h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #15455e;
+        }
+
+        .meta-badge {
+            background: #e3f0fa;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #005f8c;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.1rem 1.3rem;
+            transition: all 0.2s ease;
+            border: 1px solid #e2edf5;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: #bbd4e9;
+            box-shadow: 0 18px 28px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+
+        .card-title h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .pill {
+            font-size: 0.65rem;
+            background: #eaf4ff;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-weight: 600;
+            color: #286b96;
+        }
+
+        .card-desc {
+            font-size: 0.82rem;
+            color: #2c475c;
+            margin: 0.5rem 0 0.8rem;
+            line-height: 1.45;
+        }
+
+        .links-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.3rem;
+        }
+
+        .links-list a {
+            background: #f0f6fd;
+            padding: 0.25rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #1a5d81;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            border: 1px solid #d6e5f0;
+            transition: 0.1s;
+        }
+
+        .links-list a i {
+            font-size: 0.7rem;
+        }
+
+        .links-list a:hover {
+            background: #e2edf6;
+            color: #0a3146;
+        }
+
+        .footer-legend {
+            margin-top: 3rem;
+            background: #d9e6f2;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1f506e;
+        }
+
+        @media (max-width: 680px) {
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            .title-group h2 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <div class="badge-gold"><i class="fas fa-robot"></i> RPA PYTHON ENGINEER — ULTIMATE ROADMAP</div>
+        <h1>🧠 Ecossistema RPA + Automação Inteligente</h1>
+        <p>Tudo que um engenheiro de automação precisa dominar: bibliotecas, orquestração, visão computacional, IA, documentos, legado e cloud.</p>
+    </div>
+
+    <!-- SEÇÃO 1: FUNDAÇÃO E INFRA -->
+    <div class="module">
+        <div class="module-header">
+            <div class="title-group"><span class="icon-mod"><i class="fas fa-layer-group"></i></span><h2>Fundação & Infraestrutura</h2></div>
+            <div class="meta-badge"><i class="fab fa-docker"></i> versionamento + esteiras</div>
+        </div>
+        <div class="tech-grid">
+            <div class="card"><div class="card-title"><h3><i class="fab fa-git-alt"></i> Git/GitHub/GitLab</h3><span class="pill">versionamento</span></div><div class="card-desc">Controle de versão, code review, CI básico para robôs.</div><div class="links-list"><a href="https://github.com/fdcneto/Guia_Git_GitHub" target="_blank">Guia visual</a><a href="https://git-scm.com/doc" target="_blank">Git docs</a></div></div>
+            <div class="card"><div class="card-title"><h3><i class="fab fa-docker"></i> Docker + Docker Compose</h3><span class="pill">containers</span></div><div class="card-desc">Isolar dependências RPA, orquestração local, execução headless.</div><div class="links-list"><a href="https://docs.docker.com/guides/python/containerize/" target="_blank">Python container</a><a href="https://docs.docker.com/compose/" target="_blank">Compose</a></div></div>
+            <div class="card"><div class="card-title"><h3><i class="fas fa-terminal"></i> Linux / Windows Automation</h3><span class="pill">shell & task</span></div><div class="card-desc">Cron, systemd, Agendador Windows, scripts batch/powershell.</div><div class="links-list"><a href="https://crontab.guru/" target="_blank">cron guru</a><a href="https://learn.microsoft.com/pt-br/windows-server/administration/windows-commands/windows-commands" target="_blank">Windows commands</a></div></div>
+            <div class="card"><div class="card-title"><h3><i class="fas fa-box"></i> Poetry / pipenv</h3><span class="pill">dependências</span></div><div class="card-desc">Gerenciamento de pacotes e ambientes reproduzíveis.</div><div class="links-list"><a href="https://python-poetry.org/" target="_blank">Poetry docs</a><a href="https://pipenv.pypa.io/" target="_blank">Pipenv</a></div></div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 2: AUTOMAÇÃO UI / WEB (CLÁSSICOS E MODERNOS) -->
+    <div class="module">
+        <div class="module-header">
+            <div class="title-group"><span class="icon-mod"><i class="fas fa-globe"></i></span><h2>Automação Web & Desktop</h2></div>
+            <div class="meta-badge"><i class="fas fa-mouse"></i> UI interaction</div>
+        </div>
+        <div class="tech-grid">
+            <div class="card"><div class="card-title"><h3>Playwright</h3><span class="pill">moderno</span></div><div class="card-desc">Multi-browser, auto-wait, gravação, mobile viewport.</div><div class="links-list"><a href="https://playwright.dev/python/" target="_blank">Docs oficial</a><a href="https://github.com/IAbdulSubhan/Playwright" target="_blank">Tutorial repo</a></div></div>
+            <div class="card"><div class="card-title"><h3>Selenium + WebDriver</h3><span class="pill">clássico</span></div><div class="card-desc">Grid, suporte a browsers legados, grandes ecosistemas.</div><div class="links-list"><a href="https://www.selenium.dev/documentation/" target="_blank">Selenium docs</a></div></div>
+            <div class="card"><div class="card-title"><h3>PyAutoGUI + PyDirectInput</h3><span class="pill">desktop nativo</span></div><div class="card-desc">Movimentação, cliques, teclado e captura de tela.</div><div class="links-list"><a href="https://pyautogui.readthedocs.io/" target="_blank">PyAutoGUI</a><a href="https://github.com/learncodebygaming/pydirectinput" target="_blank">PyDirectInput</a></div></div>
+            <div class="card"><div class="card-title"><h3>PyWinAuto / UIAutomation</h3><span class="pill">Windows legacy</span></div><div class="card-desc">Automatiza aplicações Win32, MFC, Delphi, etc.</div><div class="links-list"><a href="https://pywinauto.readthedocs.io/" target="_blank">PyWinAuto</a><a href="https://github.com/yinkaisheng/Python-UIAutomation-for-Windows" target="_blank">UIAutomation</a></div></div>
+            <div class="card"><div class="card-title"><h3>pygetwindow / pyRect</h3><span class="pill">gerenciamento janelas</span></div><div class="card-desc">Redimensionar, mover e fechar janelas via código.</div><div class="links-list"><a href="https://pypi.org/project/PyGetWindow/" target="_blank">PyGetWindow</a></div></div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 3: FRAMEWORKS RPA CORPORATIVOS -->
+    <div class="module">
+        <div class="module-header">
+            <div class="title-group"><span class="icon-mod"><i class="fas fa-building"></i></span><h2>Frameworks Enterprise RPA</h2></div>
+            <div class="meta-badge"><i class="fas fa-chart-line"></i> indústria 4.0</div>
+        </div>
+        <div class="tech-grid">
+            <div class="card"><div class="card-title"><h3>Robot Framework + RPA Framework</h3><span class="pill">keyword-driven</span></div><div class="card-desc">Bibliotecas prontas: SAP, Excel, Desktop, Files, Browser.</div><div class="links-list"><a href="https://robocorp.com/docs-robot-framework/libraries/rpa-framework" target="_blank">RPA Framework</a><a href="https://github.com/robotframework/robotframework" target="_blank">GitHub</a></div></div>
+            <div class="card"><div class="card-title"><h3>Robocorp</h3><span class="pill">cloud-first</span></div><div class="card-desc">Actions Server, controle de versão, assistentes de IA.</div><div class="links-list"><a href="https://robocorp.com/docs" target="_blank">Doc oficial</a><a href="https://github.com/thearbinaut/robocorp" target="_blank">Quickstart</a></div></div>
+            <div class="card"><div class="card-title"><h3>BotCity Core</h3><span class="pill">híbrido (CV + UI)</span></div><div class="card-desc">Combina OpenCV, web scraping, desktop e Selenium.</div><div class="links-list"><a href="https://github.com/botcity-dev/botcity-framework-core-python" target="_blank">BotCity Core</a><a href="https://cloud.tencent.com.cn/developer/article/2413418?from=15425" target="_blank">Conceito</a></div></div>
+            <div class="card"><div class="card-title"><h3>TagUI + RPA for Python</h3><span class="pill">leve & rápido</span></div><div class="card-desc">Sintaxe simples, automação web e desktop.</div><div class="links-list"><a href="https://github.com/kelaberetiv/TagUI" target="_blank">TagUI</a><a href="https://github.com/tebelorg/RPA-Python" target="_blank">RPA-Python</a></div></div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 4: VISÃO COMPUTACIONAL + OCR + DOCUMENT INTELLIGENCE -->
+    <div class="module">
+        <div class="module-header">
+            <div class="title-group"><span class="icon-mod"><i class="fas fa-eye"></i></span><h2>Visão Computacional & OCR</h2></div>
+            <div class="meta-badge"><i class="fas fa-file-image"></i> documentos inteligentes</div>
+        </div>
+        <div class="tech-grid">
+            <div class="card"><div class="card-title"><h3>OpenCV + Template Matching</h3><span class="pill">reconhecimento</span></div><div class="card-desc">Localizar elementos na tela por imagem, ideal para sistemas legados.</div><div class="links-list"><a href="https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html" target="_blank">OpenCV tutoriais</a></div></div>
+            <div class="card"><div class="card-title"><h3>Tesseract / pytesseract</h3><span class="pill">OCR clássico</span></div><div class="card-desc">Extrair texto de screenshots, PDF escaneado, imagens.</div><div class="links-list"><a href="https://github.com/tesseract-ocr/tesseract" target="_blank">Tesseract</a><a href="https://pypi.org/project/pytesseract/" target="_blank">pytesseract</a></div></div>
+            <div class="card"><div class="card-title"><h3>EasyOCR / PaddleOCR</h3><span class="pill">deep learning</span></div><div class="card-desc">OCR multilíngue, alta precisão, suporte a 80+ idiomas.</div><div class="links-list"><a href="https://github.com/JaidedAI/EasyOCR" target="_blank">EasyOCR</a><a href="https://github.com/PaddlePaddle/PaddleOCR" target="_blank">PaddleOCR</a></div></div>
+            <div class="card"><div class="card-title"><h3>LayoutParser / DocTR</h3><span class="pill">estrutura documentos</span></div><div class="card-desc">Identificar tabelas, blocos e formulários em documentos.</div><div class="links-list"><a href="https://layout-parser.github.io/" target="_blank">LayoutParser</a><a href="https://github.com/mindee/doctr" target="_blank">DocTR</a></div></div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 5: MANIPULAÇÃO DE DADOS, EXCEL E ESCRITÓRIO -->
+    <div class="module">
+        <div class="module-header">
+            <div class="title-group"><span class="icon-mod"><i class="fas fa-table"></i></span><h2>Dados & Automação Office</h2></div>
+            <div class="meta-badge"><i class="fas fa-file-excel"></i> planilhas + PDF + e-mail</div>
+        </div>
+        <div class="tech-grid">
+            <div class="card"><div class="card-title"><h3>Pandas + NumPy</h3><span class="pill">análise massiva</span></div><div class="card-desc">Limpeza, consolidação, transformações antes de alimentar robôs.</div><div class="links-list"><a href="https://pandas.pydata.org/docs/" target="_blank">Pandas docs</a><a href="https://numpy.org/doc/" target="_blank">NumPy</a></div></div>
+            <div class="card"><div class="card-title"><h3>OpenPyXL / XlsxWriter / pyxlsb</h3><span class="pill">Excel avançado</span></div><div class="card-desc">Criar, modificar e formatar planilhas XLSX/XLSB.</div><div class="links-list"><a href="https://openpyxl.readthedocs.io/" target="_blank">OpenPyXL</a><a href="https://xlsxwriter.readthedocs.io/" target="_blank">XlsxWriter</a></div></div>
+            <div class="card"><div class="card-title"><h3>python-docx / pywin32 (Word)</h3><span class="pill">documentos docx</span></div><div class="card-desc">Gerar relatórios, substituir placeholders e automatizar documentos.</div><div class="links-list"><a href="https://python-docx.readthedocs.io/" target="_blank">python-docx</a><a href="https://pypi.org/project/pywin32/" target="_blank">pywin32</a></div></div>
+            <div class="card"><div class="card-title"><h3>PyPDF2 / pdfplumber / pikepdf</h3><span class="pill">PDF manipulation</span></div><div class="card-desc">Extrair texto, tabelas, mesclar e anotar PDFs.</div><div class="links-list"><a href="https://pypdf2.readthedocs.io/" target="_blank">PyPDF2</a><a href="https://github.com/jsvine/pdfplumber" target="_blank">pdfplumber</a></div></div>
+            <div class="card"><div class="card-title"><h3>smtplib / yagmail / imaplib</h3><span class="pill">e-mail automation</span></div><div class="card-desc">Envio e leitura de e-mails automáticos, anexos e filtros.</div><div class="links-list"><a href="https://docs.python.org/3/library/smtplib.html" target="_blank">smtplib</a><a href="https://github.com/kootenpv/yagmail" target="_blank">yagmail</a></div></div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 6: INTEGRAÇÕES (APIs, FILAS, BANCOS) -->
+    <div class="module">
+        <div class="module-header">
+            <div class="title-group"><span class="icon-mod"><i class="fas fa-plug"></i></span><h2>Integrações & Backend</h2></div>
+            <div class="meta-badge"><i class="fas fa-database"></i> APIs + SQL + mensageria</div>
+        </div>
+        <div class="tech-grid">
+            <div class="card"><div class="card-title"><h3>Requests / httpx / aiohttp</h3><span class="pill">REST APIs</span></div><div class="card-desc">Consumir APIs de sistemas, webhooks e serviços cloud.</div><div class="links-list"><a href="https://docs.python-requests.org/" target="_blank">Requests</a><a href="https://www.python-httpx.org/" target="_blank">HTTPX</a></div></div>
+            <div class="card"><div class="card-title"><h3>SQLAlchemy / psycopg2 / sqlite3</h3><span class="pill">bancos relacionais</span></div><div class="card-desc">Consultar e atualizar bancos de dados diretamente.</div><div class="links-list"><a href="https://www.sqlalchemy.org/" target="_blank">SQLAlchemy</a><a href="https://www.w3schools.com/sql/" target="_blank">SQL tutorial</a></div></div>
+            <div class="card"><div class="card-title"><h3>RabbitMQ / Redis / Celery</h3><span class="pill">filas & workers</span></div><div class="card-desc">Distribuir tarefas RPA, processamento assíncrono.</div><div class="links-list"><a href="https://www.rabbitmq.com/" target="_blank">RabbitMQ</a><a href="https://docs.celeryq.dev/" target="_blank">Celery</a></div></div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 7: ORQUESTRAÇÃO, MONITORAMENTO, CI/CD -->
+    <div class="module">
+        <div class="module-header">
+            <div class="title-group"><span class="icon-mod"><i class="fas fa-chart-simple"></i></span><h2>Orquestração & Observabilidade</h2></div>
+            <div class="meta-badge"><i class="fas fa-infinity"></i> produção</div>
+        </div>
+        <div class="tech-grid">
+            <div class="card"><div class="card-title"><h3>Apache Airflow / Prefect / Dagster</h3><span class="pill">workflow</span></div><div class="card-desc">Agendar DAGs, dependências entre robôs, retentativas.</div><div class="links-list"><a href="https://airflow.apache.org/" target="_blank">Airflow</a><a href="https://docs.prefect.io/" target="_blank">Prefect</a></div></div>
+            <div class="card"><div class="card-title"><h3>GitHub Actions / GitLab CI</h3><span class="pill">CI/CD nativo</span></div><div class="card-desc">Testar e publicar robôs automaticamente.</div><div class="links-list"><a href="https://docs.github.com/actions" target="_blank">GitHub Actions</a><a href="https://docs.gitlab.com/ee/ci/" target="_blank">GitLab CI</a></div></div>
+            <div class="card"><div class="card-title"><h3>Prometheus + Grafana / ELK</h3><span class="pill">métricas & logs</span></div><div class="card-desc">Monitorar execução, taxa de sucesso e alertas.</div><div class="links-list"><a href="https://prometheus.io/" target="_blank">Prometheus</a><a href="https://grafana.com/" target="_blank">Grafana</a></div></div>
+            <div class="card"><div class="card-title"><h3>Loguru / structlog</h3><span class="pill">logging estruturado</span></div><div class="card-desc">Logs fáceis, rotação, arquivos JSON, debug avançado.</div><div class="links-list"><a href="https://github.com/Delgan/loguru" target="_blank">Loguru</a><a href="https://www.structlog.org/" target="_blank">structlog</a></div></div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 8: TESTES E RESILIÊNCIA -->
+    <div class="module">
+        <div class="module-header">
+            <div class="title-group"><span class="icon-mod"><i class="fas fa-flask"></i></span><h2>Qualidade & Testes</h2></div>
+            <div class="meta-badge"><i class="fas fa-bug"></i> robustez</div>
+        </div>
+        <div class="tech-grid">
+            <div class="card"><div class="card-title"><h3>pytest + unittest + mock</h3><span class="pill">unit tests</span></div><div class="card-desc">Testar funções críticas, simular falhas, coverage.</div><div class="links-list"><a href="https://docs.pytest.org/" target="_blank">pytest docs</a><a href="https://learn.microsoft.com/lb-lu/training/modules/test-python-with-pytest/5-exercise" target="_blank">exercício prático</a></div></div>
+            <div class="card"><div class="card-title"><h3>seleniumbase / webdriver-manager</h3><span class="pill">testes web robustos</span></div><div class="card-desc">Gerência automática de drivers, relatórios e gravação.</div><div class="links-list"><a href="https://github.com/seleniumbase/SeleniumBase" target="_blank">SeleniumBase</a></div></div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 9: IA GENERATIVA E RPA COGNITIVO -->
+    <div class="module">
+        <div class="module-header">
+            <div class="title-group"><span class="icon-mod"><i class="fas fa-brain"></i></span><h2>Automação Cognitiva & IA</h2></div>
+            <div class="meta-badge"><i class="fas fa-microchip"></i> agentic RPA</div>
+        </div>
+        <div class="tech-grid">
+            <div class="card"><div class="card-title"><h3>LangChain / LlamaIndex</h3><span class="pill">LLM agents</span></div><div class="card-desc">Robôs que interpretam documentos complexos e tomam decisões.</div><div class="links-list"><a href="https://python.langchain.com/" target="_blank">LangChain</a><a href="https://www.llamaindex.ai/" target="_blank">LlamaIndex</a></div></div>
+            <div class="card"><div class="card-title"><h3>OpenAI API / GPT4All (local)</h3><span class="pill">NLP generativo</span></div><div class="card-desc">Extrair insights, sumarizar e-mails, classificar intenções.</div><div class="links-list"><a href="https://platform.openai.com/docs/overview" target="_blank">OpenAI API</a><a href="https://gpt4all.io/" target="_blank">GPT4All</a></div></div>
+            <div class="card"><div class="card-title"><h3>spaCy / NLTK / TextBlob</h3><span class="pill">processamento linguagem</span></div><div class="card-desc">Entidades, sentimentos, análise de documentos textuais.</div><div class="links-list"><a href="https://spacy.io/" target="_blank">spaCy</a><a href="https://www.nltk.org/" target="_blank">NLTK</a></div></div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 10: NUVEM E RPA SERVERLESS -->
+    <div class="module">
+        <div class="module-header">
+            <div class="title-group"><span class="icon-mod"><i class="fas fa-cloud-arrow-up"></i></span><h2>Cloud RPA & Serverless</h2></div>
+            <div class="meta-badge"><i class="fab fa-aws"></i> AWS / Azure / GCP</div>
+        </div>
+        <div class="tech-grid">
+            <div class="card"><div class="card-title"><h3>AWS Lambda + Step Functions</h3><span class="pill">serverless RPA</span></div><div class="card-desc">Executar automações sem servidor, custo reduzido.</div><div class="links-list"><a href="https://docs.aws.amazon.com/lambda/" target="_blank">AWS Lambda</a><a href="https://docs.aws.amazon.com/step-functions/" target="_blank">Step Functions</a></div></div>
+            <div class="card"><div class="card-title"><h3>Azure Functions / Logic Apps</h3><span class="pill">Microsoft RPA</span></div><div class="card-desc">Integração com Power Automate e execução serverless.</div><div class="links-list"><a href="https://learn.microsoft.com/azure/azure-functions/" target="_blank">Azure Functions</a></div></div>
+            <div class="card"><div class="card-title"><h3>Google Cloud Run / Cloud Functions</h3><span class="pill">escalabilidade</span></div><div class="card-desc">Conteinerização de robôs e execução serverless.</div><div class="links-list"><a href="https://cloud.google.com/run" target="_blank">Cloud Run</a></div></div>
+        </div>
+    </div>
+
+    <div class="footer-legend">
+        🚀 <strong>Roadmap definitivo para RPA Engineer</strong> — 50+ tecnologias com links oficiais e ativos.<br>
+        🔥 Dica de evolução: Git → Docker → Playwright / Robot Framework → OpenCV → Airflow → LLMs para se tornar referência em automação.
+    </div>
+</div>
+</body>
+</html>
