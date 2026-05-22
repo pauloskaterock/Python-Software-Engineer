@@ -117,13 +117,23 @@ print('voce digitou', var)
 #-----------------------------------------------------
 
 # Prêmio da Mega-Sena
-total = float( input('Premio total da Mega: ') )
+# total = float( input('Premio total da Mega: ') )
 
-# Número de ganhadores
-num = int( input('Numero de ganhadores: ') )
+# # Número de ganhadores
+# num = int( input('Numero de ganhadores: ') )
 
 # print('Cada um vai ficar com R$ ', (total/num) )
 # print('Cada um vai ficar com R$ %.2f' % (total/num) )
 
-print('O premio total foi R$%.2f para %d ganhadores, onde cada um ficou \
-com R$%.2f' %(total,num,total/num))
+# print('O premio total foi R$%.2f para %d ganhadores, onde cada um ficou \
+# com R$%.2f' %(total,num,total/num))
+
+#-----------------------------------------------------------
+bru = input('She is hot')
+gab = input('she is hot')
+
+if bru == gab:
+  print(' Ambos are hot')
+
+elif bru != gab:
+  print('Not equal')

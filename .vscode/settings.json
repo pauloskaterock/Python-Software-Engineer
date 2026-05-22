@@ -1,3 +1,4 @@
 {
-  "powermode.presets": "flames"
+  "powermode.presets": "flames",
+  "docwriter.style": "reST"
 }
