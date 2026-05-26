@@ -1,4 +1,4 @@
-# Importa o módulo http.client que fornece a funcionalidade de
+3# Importa o módulo http.client que fornece a funcionalidade de
 # cliente HTTP para Python, permitindo fazer requisições a servidores web.
 import http.client
 
