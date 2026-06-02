@@ -63,11 +63,53 @@ caractere = input("Digite um caractere: ")
 
 conta_caractere(string,caractere)
 
-# --------------------------------------------------------
 
-# Exercícios Propostos
 
-# 01. Crie uma função que recebe um número e exiba seu quadrado.
-# 02. Crie uma função que recebe um valor e exiba seu cubo.
-# 03. Crie uma função que recebe 4 notas de um aluno, e exiba a média dele.
-# 04. Crie uma função que recebe 3 números e exiba o maior deles.
+# ==================Exercícios Propostos===================================
+
+# ---------------01. Crie uma função que recebe um número e exiba seu quadrado.
+
+print("-----------01. Quadrado de um número------------------")
+
+def quadrado(numero):
+    return numero**2
+
+num = float(input("Digite um número: "))
+print("O quadrado de", num, "é", quadrado(num))
+
+
+
+# ----------------------02. Crie uma função que recebe um valor e exiba seu cubo.
+
+print("-----------02. Cubo de um número------------------")
+
+def cubo(numero):
+    return numero**3
+
+num = float(input("Digite um número: "))
+print("O cubo de", num, "é", cubo(num))
+
+
+
+#--------------- 03. Crie uma função que recebe 4 notas de um aluno, e exiba a média dele.
+nota1 = int(input('digite a primeira nota: '))
+nota2 = int(input('digite a segunda nota: '))
+nota3 = int(input('digite a terceira nota: '))
+nota4 = int(input('digite a quarta nota: '))
+
+def media_aluno(n1, n2, n3, n4):
+    return (n1 + n2 + n3 + n4) / 4
+
+print("A média do aluno é:", media_aluno(nota1, nota2, nota3, nota4))
+
+
+# ------------- 04. Crie uma função que recebe 3 números e exiba o maior deles
+
+n1 = float(input("-----------------Digite um número: "))
+n2 = float(input("-----------------Digite um número: "))
+n3 = float(input("-----------------Digite um número: "))
+
+def maior_de_tres(n1, n2, n3):
+    return max(n1, n2, n3)
+
+print("O maior número é:", maior_de_tres(n1, n2, n3))
