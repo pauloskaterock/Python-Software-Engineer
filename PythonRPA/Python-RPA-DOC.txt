@@ -1,0 +1,72 @@
+Para trabalhar com RPA (Robotic Process Automation) usando Python, você pode utilizar várias bibliotecas e frameworks que ajudam na automação de tarefas repetitivas. A documentação oficial dessas ferramentas pode ser encontrada nos respectivos sites dos projetos. Aqui estão algumas das bibliotecas e ferramentas populares para RPA em Python, juntamente com links para suas documentações:
+
+1. Selenium
+Selenium é uma das bibliotecas mais populares para automação de navegadores web.
+
+https://www.selenium.dev/documentation/
+
+Documentação Oficial: Selenium Documentation
+
+2. BeautifulSoup
+BeautifulSoup é usada para web scraping, ajudando a extrair dados de páginas HTML e XML.
+
+https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+
+Documentação Oficial: BeautifulSoup Documentation
+
+3. Requests
+Requests é uma biblioteca simples para fazer requisições HTTP.
+
+https://requests.readthedocs.io/en/latest/
+
+Documentação Oficial: Requests Documentation
+
+4. PyAutoGUI
+PyAutoGUI permite controlar o mouse e o teclado para automatizar interações com a interface gráfica do usuário.
+
+https://pyautogui.readthedocs.io/en/latest/
+
+Documentação Oficial: PyAutoGUI Documentation
+
+5. RPA for Python (RPA Framework)
+RPA Framework é uma coleção de bibliotecas para automação de processos robóticos com Python.
+
+https://rpaframework.org/
+
+Documentação Oficial: RPA Framework Documentation
+
+6. TagUI for Python
+TagUI é uma ferramenta de RPA de código aberto que pode ser usada através de Python.
+
+https://github.com/tebelorg/RPA-Python
+
+Documentação Oficial: TagUI for Python Documentation
+7. Robot Framework
+Robot Framework é uma framework de automação genérica para testes de aceitação e desenvolvimento orientado a testes (ATDD).
+
+
+https://robotframework.org/
+
+Documentação Oficial: Robot Framework Documentation
+
+8. pywinauto
+pywinauto é um conjunto de módulos Python para automação de GUI no Windows.
+
+https://pywinauto.readthedocs.io/en/latest/
+
+Documentação Oficial: pywinauto Documentation
+
+Recursos Adicionais
+Exemplos de Automação com Python:
+Automate the Boring Stuff with Python: Este é um livro muito popular que cobre vários exemplos práticos de automação usando Python. Site Oficial
+Cursos Online:
+Udemy, Coursera, e LinkedIn Learning: Muitos cursos online oferecem tutoriais abrangentes sobre RPA com Python.
+Comunidades e Fóruns:
+Stack Overflow: Uma boa fonte para encontrar respostas a questões específicas sobre automação e bibliotecas de Python.
+GitHub: Muitas ferramentas de RPA possuem repositórios no GitHub, onde você pode encontrar exemplos, relatórios de bugs e colaborações.
+Estes recursos devem ajudá-lo a encontrar a documentação e os tutoriais necessários para começar a usar Python para RPA.
+
+
+
+
+

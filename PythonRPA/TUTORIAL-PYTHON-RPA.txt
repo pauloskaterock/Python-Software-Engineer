@@ -1,0 +1,15 @@
+Aqui estão alguns tutoriais e recursos úteis para ajudá-lo a começar a usar RPA (Robotic Process Automation) usando Python:
+
+Curso Udemy: RPA com Python e BotCity
+ Este curso cobre uma introdução abrangente ao RPA com Python e BotCity, incluindo automação de web e desktop, web scraping e o uso do BotCity Maestro para gerenciar automações. É adequado para iniciantes e para aqueles que desejam aprimorar suas habilidades de automação. Confira na Udemy ​( Udemy ) .
+
+Repositório GitHub: RPA-Python
+ Este repositório GitHub da tebelorg fornece um pacote Python para RPA, que oferece suporte a várias tarefas de automação, como web scraping, automação de desktop e muito mais. O repositório inclui documentação e exemplos para ajudá-lo a começar. Visite o repositório GitHub ​( GitHub ) .
+
+Tutorial do YouTube: Introdução ao RPA para Python
+ Este vídeo do YouTube oferece um tutorial introdutório ao RPA usando Python, abordando os conceitos básicos e demonstrando como configurar e usar o Python para tarefas de automação. Assista ao tutorial no YouTube ​( YouTube ) .
+
+Tutorial Intellipaat: Python para RPA
+ O Intellipaat fornece um tutorial que explica como usar Python para RPA, incluindo exemplos e instruções passo a passo sobre como criar scripts de automação simples. Este é um excelente ponto de partida para compreender as aplicações práticas de RPA em Python. Explore o tutorial do Intellipaat .
+
+Esses recursos devem fornecer uma base sólida no uso de Python para RPA, abrangendo vários aspectos, desde a configuração do seu ambiente até o desenvolvimento e gerenciamento de scripts de automação.
